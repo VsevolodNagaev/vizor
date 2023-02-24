@@ -1,13 +1,12 @@
-
 <?php
-$data = array(
-    "value1" => "23",
-    "value2" => "45",
-    "timestamp" => time()
-);
- 
-$json_data = json_encode($data);
- 
-header('Content-Type: application/json');
-echo $json_data;
+if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+    $data = $_GET['data'];
+    $time = time();
+
+    // Save the data and time to a file or database
+
+    $response = array('data' => $data, 'time' => $time);
+    header('Content-Type: application/json');
+    echo json_encode($response);
+}
 ?>
